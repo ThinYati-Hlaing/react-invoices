@@ -1,13 +1,32 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
+import { GeneralContext } from "../contexts/GeneralContext";
 
-const CheckoutForm = ({ products }) => {
+const CheckoutForm = () => {
 
+  const { products, addRecord } = useContext(GeneralContext)
   const idRef = useRef("");
   const quantityRef = useRef("");
 
   const handleBuyBtn = () => {
+    // console.log(idRef.current.value, quantityRef.current.valueAsNumber);
+    const currentProduct = products.find((product) => product.id === parseInt(idRef.current.value));
 
-  }
+    const cost = currentProduct.price * quantityRef.current.valueAsNumber;
+
+    const newRecord = {
+      id: Date.now(),
+      productId: parseInt(idRef.current.value),
+      name: currentProduct.name,
+      price: currentProduct.price,
+      quantity: quantityRef.current.valueAsNumber,
+      cost,
+    };
+    addRecord(newRecord);
+
+    // idRef.current.value = "";
+    
+    quantityRef.current.value = "";
+  };
 
   return (
     <section className="mb-10 block print:hidden">
@@ -41,18 +60,18 @@ const CheckoutForm = ({ products }) => {
               Quantity
             </label>
             <input
-              type="submit"
+              type="number"
               ref={quantityRef}
               id="quantityInput"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               required
             />
           </div>
-          <div className="col-span-1">
+          <div className="col-span-1 flex-auto justify-center items-center">
             <button
               type="button"
               onClick={handleBuyBtn}
-              className="font-heading w-full h-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              className="font-heading w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
               Buy
             </button>
