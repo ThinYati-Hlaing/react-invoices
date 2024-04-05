@@ -31,7 +31,7 @@ const CheckoutForm = () => {
   return (
     <section className="mb-10 block print:hidden">
       <form id="recordForm">
-        <div className="grid grid-cols-5 gap-3">
+        <div className="grid grid-cols-5 gap-3 items-end">
           <div className="col-span-2">
             <label
               htmlFor="productSelect"
@@ -67,11 +67,11 @@ const CheckoutForm = () => {
               required
             />
           </div>
-          <div className="col-span-1 flex-auto justify-center items-center">
+          <div className="col-span-1">
             <button
               type="button"
               onClick={handleBuyBtn}
-              className="font-heading w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              className="font-heading w-full h-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-3 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
               Buy
             </button>
