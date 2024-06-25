@@ -21,10 +21,13 @@ const CheckoutForm = () => {
       quantity: quantityRef.current.valueAsNumber,
       cost,
     };
-    addRecord(newRecord);
+    if(quantityRef.current.value){
+      addRecord(newRecord);
+    }
+    // addRecord(newRecord);
 
     // idRef.current.value = "";
-    
+
     quantityRef.current.value = "";
   };
 

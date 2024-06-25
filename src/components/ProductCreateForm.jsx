@@ -2,6 +2,7 @@ import React, { useContext, useRef } from 'react'
 import { GeneralContext } from '../contexts/GeneralContext';
 
 const ProductCreateForm = () => {
+  const {toggleDrawer } = useContext(GeneralContext);
 
   const { addProduct } = useContext(GeneralContext)
 
@@ -14,12 +15,12 @@ const ProductCreateForm = () => {
       name: nameRef.current.value,
       price: priceRef.current.valueAsNumber,
     };
-
-    // console.dir(nameRef.current.value);
-    // console.log(priceRef.current.value);
-    addProduct(newProduct);
-    nameRef.current.value = "";
-    priceRef.current.value = "";
+    if (nameRef.current.value) {
+      addProduct(newProduct);
+      nameRef.current.value = "";
+      priceRef.current.value = "";
+      toggleDrawer();
+    }
   }
   return (
     <div className="border-t-2 p-3">
