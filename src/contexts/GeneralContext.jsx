@@ -11,10 +11,11 @@ const GeneralContextProvider = ({ children }) => {
     }
 
     const [products, setProduct] = useState([
-        { id: 1, name: "Apple", price: 1.5 },
-        { id: 2, name: "Banana", price: 0.75 },
-        { id: 3, name: "Orange", price: 1.2 },
-        { id: 4, name: "Grapes", price: 2.0 },
+        { id: 1, name: "Smartwatch", price: 249.99 },
+        { id: 2, name: "Laptop", price: 999.99 },
+        { id: 3, name: "Smartphone", price: 799.99 },
+        { id: 4, name: "Headphones", price: 199.99 },
+        { id: 5, name: "Tablet", price: 499.99 }
         // Add more fruits as needed
     ]);
 
