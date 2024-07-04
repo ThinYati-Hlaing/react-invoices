@@ -9,7 +9,7 @@ const Record = ({ record: { id, name, price, quantity, cost }, index, }) => {
   const handleRemoveBtn = () => {
     Swal.fire({
       title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      text: "You really want to delete this!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -18,12 +18,7 @@ const Record = ({ record: { id, name, price, quantity, cost }, index, }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         removeRecord(id);
-        toast.success("List deleted")
-        // Swal.fire({
-        //   title: "Deleted!",
-        //   text: "Your List has been deleted.",
-        //   icon: "success"
-        // });
+        toast.success("Product deleted")
       }
     });
   }

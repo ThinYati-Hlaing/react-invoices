@@ -1,5 +1,7 @@
 import React, { useContext, useRef } from "react";
 import { GeneralContext } from "../contexts/GeneralContext";
+import toast from 'react-hot-toast';
+
 
 const CheckoutForm = () => {
 
@@ -21,8 +23,9 @@ const CheckoutForm = () => {
       quantity: quantityRef.current.valueAsNumber,
       cost,
     };
-    if(quantityRef.current.value){
+    if (quantityRef.current.value) {
       addRecord(newRecord);
+      toast.success("Product added")
     }
     // addRecord(newRecord);
 

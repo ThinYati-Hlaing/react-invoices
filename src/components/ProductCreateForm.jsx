@@ -1,5 +1,6 @@
 import React, { useContext, useRef } from 'react'
 import { GeneralContext } from '../contexts/GeneralContext';
+import toast from 'react-hot-toast';
 
 const ProductCreateForm = () => {
   const {toggleDrawer } = useContext(GeneralContext);
@@ -20,6 +21,7 @@ const ProductCreateForm = () => {
       nameRef.current.value = "";
       priceRef.current.value = "";
       toggleDrawer();
+      toast.success("Product added")
     }
   }
   return (
