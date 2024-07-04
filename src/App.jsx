@@ -6,6 +6,7 @@ import RecordGroup from './components/RecordGroup'
 import Footer from './components/Footer'
 import Drawer from './components/Drawer'
 import ProductCreateForm from './components/ProductCreateForm'
+import { Toaster } from 'react-hot-toast'
 
 const App = () => {
 
@@ -16,6 +17,7 @@ const App = () => {
       <RecordTable />
       <Footer />
       <Drawer />
+      <Toaster position="bottom-left" reverseOrder={false} />
     </div>
   )
 }

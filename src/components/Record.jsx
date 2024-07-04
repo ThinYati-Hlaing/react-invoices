@@ -1,12 +1,33 @@
 import React, { useContext } from 'react'
 import { GeneralContext } from '../contexts/GeneralContext';
+import Swal from 'sweetalert2';
+import toast from 'react-hot-toast';
 
 const Record = ({ record: { id, name, price, quantity, cost }, index, }) => {
   const { removeRecord, updateRecord } = useContext(GeneralContext)
 
   const handleRemoveBtn = () => {
-    removeRecord(id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        removeRecord(id);
+        toast.success("List deleted")
+        // Swal.fire({
+        //   title: "Deleted!",
+        //   text: "Your List has been deleted.",
+        //   icon: "success"
+        // });
+      }
+    });
   }
+
   return (
     <tr className="group odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700" product-id={1}>
       <td className="px-6 py-4 td-counter">{index + 1}</td>
